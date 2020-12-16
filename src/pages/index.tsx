@@ -50,11 +50,12 @@ class Game {
   // 初始化图片
   initImg(imgName: TImgName, isImgReadyName: TImgReadyName) {
     this[imgName] = new Image()
-    if (this[imgName] instanceof HTMLImageElement) {
-      this[imgName].onload = () => {
+    let tempImgName=this[imgName]
+    if (tempImgName instanceof HTMLImageElement) {
+      tempImgName.onload = () => {
         this[isImgReadyName] = true
       }
-      this[imgName].src = require('../asserts/images/background.png')
+      tempImgName.src = require('../asserts/images/background.png')
     }
   }
 }
