@@ -11,7 +11,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  routes: [
-    { exact: true,path: '/', component: '@/pages/index.tsx' },
-  ],
+  // routes: [
+  //   { exact: true, path: '/', component: '@/pages/index.tsx' },
+  // ],
 });
