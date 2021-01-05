@@ -1,13 +1,17 @@
 import { defineConfig } from 'umi';
 
 export default defineConfig({
-  dva:{
-    skipModelValidate:true
+  hash: true,
+  history: {
+    type: 'hash',
+  },
+  dva: {
+    skipModelValidate: true
   },
   nodeModulesTransform: {
     type: 'none',
   },
   routes: [
-    { path: '/', component: '@/pages/index' },
+    { exact: true,path: '/', component: '@/pages/index.tsx' },
   ],
 });
