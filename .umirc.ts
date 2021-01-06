@@ -6,12 +6,9 @@ export default defineConfig({
     type: 'hash',
   },
   dva: {
-    skipModelValidate: true
+    skipModelValidate: true,
   },
   nodeModulesTransform: {
     type: 'none',
   },
-  // routes: [
-  //   { exact: true, path: '/', component: '@/pages/index.tsx' },
-  // ],
 });
