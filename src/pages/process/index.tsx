@@ -7,9 +7,14 @@ type TProps = {
 function HighHoc<P extends Object>(Com: React.ComponentType<P>) {
   // 获取name
   const name = '高阶组件';
-  return (props: P) => <Com {...(props as P)} name={name} />;
+  class WrapCom extends Component {
+    render() {
+      return <Com {...(this.props as P)} name={name} />
+    }
+  }
+  return WrapCom
 }
-
+@HighHoc
 class Kaikeba extends Component<Readonly<TProps>> {
   render() {
     return (
@@ -20,13 +25,13 @@ class Kaikeba extends Component<Readonly<TProps>> {
   }
 }
 
-const WrapKaikeba = HighHoc(Kaikeba);
+// const WrapKaikeba = HighHoc(Kaikeba);
 
 export default class Hoc extends Component {
   render() {
     return (
       <div>
-        <WrapKaikeba stage="reactee"></WrapKaikeba>
+        <Kaikeba stage="reactee"></Kaikeba>
       </div>
     );
   }

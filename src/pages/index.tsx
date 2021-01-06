@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'umi';
-class Index extends Component {
+import { connect, Link } from 'umi';
+@connect()
+class Index extends Component<{},{}> {
   render() {
     return (
       <div>
