@@ -9,6 +9,10 @@ class Index extends Component {
                 <Link to="/game">游戏</Link>
                 <br />
                 <Link to="/process">进度条</Link>
+                <br/>
+                <Link to="/componentLearn">组件学习</Link>
+                <br/>
+                <Link to="/myTable">table学习</Link>
             </div>
         );
     }
