@@ -13,6 +13,8 @@ class Index extends Component {
                 <Link to="/componentLearn">组件学习</Link>
                 <br/>
                 <Link to="/myTable">table学习</Link>
+                <br/>
+                <Link to="/learnRxjs">Rxjs学习</Link>
             </div>
         );
     }
