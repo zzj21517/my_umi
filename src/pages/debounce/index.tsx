@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'umi';
 import { connect } from 'dva';
 import { debounce } from '@/utils/debounce'
+import { throttle } from '@/utils/throttle'
 import styles from './index.less'
 let count = 0
 class Index extends Component {
     constructor(props: {} | Readonly<{}>) {
         super(props)
-        this.move = debounce(this.move,1000, true)
+        this.move = throttle(this.move, 1000)
     }
     move = (dom: Element) => {
         console.log('move')
