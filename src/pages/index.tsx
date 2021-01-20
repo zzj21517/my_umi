@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-01-19 19:48:17
- * @LastEditTime: 2021-01-19 19:48:32
- * @LastEditors: your name
+ * @LastEditTime: 2021-01-20 19:06:58
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\index.tsx
  */
@@ -27,6 +27,8 @@ class Index extends Component {
                 <Link to="/learnRxjs">Rxjs学习</Link>
                 <br />
                 <Link to='/debounce' >debounce学习</Link>
+                <br />
+                <Link to='/shihang' >shihang</Link>
             </div>
         );
     }
