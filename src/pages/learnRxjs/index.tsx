@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-13 21:20:10
- * @LastEditTime: 2021-02-01 17:38:02
+ * @LastEditTime: 2021-02-01 17:41:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\learnRxjs\index.tsx
@@ -15,7 +15,7 @@ export default class LearnRxJs extends Component {
     }
     state = {
         timeList: [
-            '2020-12-28', '2020-5-1', '2021-1-1'
+            '2021/02/01 17:40', '2020-5-1', '2021-1-1'
         ],
         diff: []
     }
