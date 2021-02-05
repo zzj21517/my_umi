@@ -1,13 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-01-13 21:20:10
- * @LastEditTime: 2021-02-01 17:41:59
+ * @LastEditTime: 2021-02-03 16:07:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\learnRxjs\index.tsx
  */
 import React, { Component } from 'react'
-import { fromEvent, interval } from 'rxjs'
+import { fromEvent, interval, timer, of, from } from 'rxjs'
+import { switchMap, take, map, combineAll, zip, scan } from 'rxjs/operators'
 import moment from 'moment'
 export default class LearnRxJs extends Component {
     constructor(props: any) {
@@ -27,9 +28,47 @@ export default class LearnRxJs extends Component {
         //     }
         // })
 
-        this.tick()
+        // this.tick()
+        // this.tick1()
+        // this.tick2()
+        this.tick3()
     }
 
+    tick3 = () => {
+        const source = from('hello').pipe(zip(interval(600), (x, y) => {
+            console.log(x, y, 'xy')
+            return x
+        }))
+        const example = source.pipe(scan((origin, next) => {
+            console.log(origin, next, 'origin,next')
+            return origin + next
+        }, ''))
+        example.subscribe(val => {
+            console.log(val)
+        })
+    }
+    tick2 = () => {
+        const source = interval(1000).pipe(take(2))
+        const example = source.pipe(
+            map(val => interval(1000).pipe(map(i => {
+                console.log(i)
+                return `${i}`
+            }), take(5)))
+        )
+
+        const combined = example.pipe(combineAll())
+
+        const subscribe = combined.subscribe((val) => {
+            console.log(val)
+        })
+    }
+    tick1 = () => {
+        const source = timer(0, 5000);
+        //switch to new inner observable when source emits, emit items that are emitted
+        const example = source.pipe(switchMap(() => interval(500)));
+        //output: 0,1,2,3,4,5,6,7,8,9...0,1,2,3,4,5,6,7,8
+        const subscribe = example.subscribe(val => console.log(val));
+    }
     tick = () => {
         let { timeList } = this.state
         interval(1000).subscribe(() => {
