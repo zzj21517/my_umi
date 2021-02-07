@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-19 19:48:17
- * @LastEditTime: 2021-01-26 17:27:59
+ * @LastEditTime: 2021-02-07 13:54:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\index.tsx
@@ -35,6 +35,8 @@ class Index extends Component {
                 <Link to='/debounce' >debounce学习</Link>
                 <br />
                 <Link to='/shihang' >shihang</Link>
+                <br />
+                <Link to='/learnLinkedList' >学习链表</Link>
             </div>
         );
     }
