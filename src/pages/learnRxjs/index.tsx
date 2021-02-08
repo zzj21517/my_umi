@@ -1,24 +1,26 @@
 /*
  * @Author: your name
  * @Date: 2021-01-13 21:20:10
- * @LastEditTime: 2021-02-03 16:07:48
+ * @LastEditTime: 2021-02-08 17:43:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\learnRxjs\index.tsx
  */
 import React, { Component } from 'react'
-import { fromEvent, interval, timer, of, from } from 'rxjs'
-import { switchMap, take, map, combineAll, zip, scan } from 'rxjs/operators'
+import { fromEvent, interval, timer, of, from, Subject } from 'rxjs'
+import { switchMap, take, map, combineAll, zip, scan, mapTo } from 'rxjs/operators'
 import moment from 'moment'
 export default class LearnRxJs extends Component {
     constructor(props: any) {
         super(props)
+        this.subject = new Subject()
     }
     state = {
         timeList: [
             '2021/02/01 17:40', '2020-5-1', '2021-1-1'
         ],
-        diff: []
+        diff: [],
+        count: 0,
     }
     componentDidMount() {
         // let clicks$ = fromEvent(document, 'click')
@@ -31,7 +33,16 @@ export default class LearnRxJs extends Component {
         // this.tick()
         // this.tick1()
         // this.tick2()
-        this.tick3()
+        // this.tick3()
+        this.subject.pipe(mapTo(1), scan((origin, next) => {
+            console.log(origin,next,'33')
+            return origin + next
+        }))
+            .subscribe(x => {
+                this.setState({
+                    count: x
+                })
+            })
     }
 
     tick3 = () => {
@@ -86,6 +97,11 @@ export default class LearnRxJs extends Component {
         const { timeList, diff } = this.state
         return (
             <div>
+                <button onClick={
+                    event => {
+                        this.subject.next(event)
+                    }
+                } >{this.state.count}</button>
                 <button onClick={() => { console.log('点击了') }} >按钮</button>
 
                 {diff.map(time => (
