@@ -24,6 +24,7 @@
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.3.2",
     "dva-model-creator": "^0.4.3",
+    "immutable": "^4.0.0-rc.12",
     "moment": "^2.29.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
