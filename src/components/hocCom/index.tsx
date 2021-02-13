@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-11 11:40:36
- * @LastEditTime: 2021-02-11 12:55:29
+ * @LastEditTime: 2021-02-13 11:45:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\components\hocCom\index.tsx
@@ -27,7 +27,7 @@ export default function ComWithLoading(Com: ComponentType<{ data: Array<string> 
                     loading: false,
                     data: ['zzj', 'cy', 'nwz', 'zsq']
                 })
-            }, 500)
+            }, 1000)
         }
         render() {
             const { data, loading } = this.state
