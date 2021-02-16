@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-19 19:48:17
- * @LastEditTime: 2021-02-15 11:04:28
+ * @LastEditTime: 2021-02-15 22:09:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\index.tsx
@@ -43,6 +43,9 @@ class Index extends Component {
                 <Link to='/learnImmutable'>学习不可变数据（immudiable data）</Link>
                 <br />
                 <Link to='/learnTs' >学习typescript</Link>
+
+                <br/>
+                <Link to="/counter">counter</Link>
             </div>
         );
     }

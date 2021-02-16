@@ -5,7 +5,7 @@
     "build": "umi build",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
-    "test": "umi-test",
+    "test": "cross-env NODE_ENV=test jest",
     "test:coverage": "umi-test --coverage"
   },
   "gitHooks": {
@@ -33,7 +33,31 @@
     "yorkie": "^2.0.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "lint-staged": "^10.0.7",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "ts-jest": "^26.5.1",
+    "typescript": "^4.1.5"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/tests/**/*.test.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/fixtures/"
+    ],
+    "transform": {
+      "^.+\\.ts$": "<rootDir>/node_modules/ts-jest"
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/tests/",
+      "/dist/"
+    ]
   }
 }
