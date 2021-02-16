@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-15 22:03:03
- * @LastEditTime: 2021-02-16 13:18:40
+ * @LastEditTime: 2021-02-16 16:23:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\counter\index.tsx
@@ -38,6 +38,4 @@ export default class Counter extends Component<{ name: 'zzj' }, { count: number 
         )
     }
 }
-
-export const renderDom = (container: HTMLElement) => ReactDom.render(<Counter name='zzj' />, container)
 

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-15 21:59:36
- * @LastEditTime: 2021-02-16 16:15:25
+ * @LastEditTime: 2021-02-16 16:18:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\test\index.test.ts
@@ -28,8 +28,14 @@ it('can render and update a counter', () => {
     })
     const button = container?.querySelector('button')
     const label = container?.querySelector('p')
-    expect(label?.textContent)?.toBe('You clicked 0 times')
-    expect(document.title)?.toBe('You clicked 0 times')
+    expect(label?.textContent).toBe('You clicked 0 times')
+    expect(document.title).toBe('You clicked 0 times')
 
+    // 在测试render 和 componentDidUpadate
+    act(()=>{
+        button?.dispatchEvent(new MouseEvent('click',{bubbles:true}))
+    })
+    expect(label?.textContent).toBe('You clicked 1 times')
+    expect(document.title).toBe('You clicked 1 times')
 })
 
