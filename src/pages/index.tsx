@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-19 19:48:17
- * @LastEditTime: 2021-02-16 15:58:50
+ * @LastEditTime: 2021-02-16 21:09:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\index.tsx
@@ -12,10 +12,7 @@ import { connect } from 'dva';
 import { shallowCopy } from '@/utils/objectCopy'
 import { flatten } from '@/utils/flatten'
 import { debounce } from '@/utils/debounce'
-import { renderDom } from '@/pages/counter'
 import styles from './index.less'
-
-console.log(renderDom,'rrr')
 let count = 0
 class Index extends Component {
     componentDidMount() {
