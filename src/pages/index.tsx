@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-19 19:48:17
- * @LastEditTime: 2021-02-16 21:09:47
+ * @LastEditTime: 2021-02-17 20:35:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\index.tsx
@@ -46,6 +46,9 @@ class Index extends Component {
 
                 <br />
                 <Link to="/counter">counter</Link>
+
+                <br/>
+                <Link to='/learnPromise' >learnPromise</Link>
             </div>
         );
     }
