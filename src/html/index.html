@@ -4,16 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 </head>
 
 <body>
-    <div id="root"></div>
-    <script  src="./index.jsx" ></script>
-    <!-- <script>
-        ReactDOM.render('zzj',document.querySelector('#root'))
-    </script> -->
+  <div id="root"></div>
+  <script>
+    // bind
+    // fn.bind(context),//改变this指向,并返回一个函数
+    Function.prototype.bind2 = function (context) {
+      console.log(arguments, 'ass')
+      context = context || window
+      let self = this
+      var args = Array.prototype.slice.call(arguments, 1)
+
+      function fBound() {
+        var bindArgs = Array.prototype.slice.call(arguments)
+        return self.call(context, args.concat(bindArgs))
+      }
+      fBound.prototype = this.prototype
+      return fBound
+    }
+
+    function foo() {
+      this.name = 'zzj'
+    }
+
+    let bar = {
+      value: 1
+    }
+    foo.prototype.age = 18
+    let m = foo.bind2(bar)
+    console.log(m, m.prototype)
+
+  </script>
 </body>
 
 </html>
