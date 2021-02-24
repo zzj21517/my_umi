@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-23 21:38:48
- * @LastEditTime: 2021-02-23 22:27:47
+ * @LastEditTime: 2021-02-24 11:36:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\learnGenerator\index.tsx
@@ -13,16 +13,19 @@ export default class LearnGenerator extends Component {
     componentDidMount() {
         let g = this.gen()
         let result = g.next();
-        (result.value as Promise<boolean>).then(res => {
+        let res=(result.value as Promise<boolean>).then(res => {
             return res
-        }).then(data => {
-            g.next(data)
+        })
+        console.log(res,'res')
+        res.then(data => {
+            console.log(data,'ddd')
+            g.next({value:1})
         })
     }
 
     fn(resolve: Function, reject: Function) {
         setTimeout(() => {
-            resolve(true)
+            resolve({name:'zzj'})
         }, 1000)
     }
     *gen() {
