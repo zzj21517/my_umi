@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-19 19:48:17
- * @LastEditTime: 2021-02-23 21:39:21
+ * @LastEditTime: 2021-03-02 15:24:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\index.tsx
@@ -16,8 +16,6 @@ import styles from './index.less'
 let count = 0
 class Index extends Component {
     componentDidMount() {
-        let arr = [1, [2, 3], [4, 5]]
-        console.log(flatten(arr))
     }
     render() {
         return (
@@ -47,11 +45,14 @@ class Index extends Component {
                 <br />
                 <Link to="/counter">counter</Link>
 
-                <br/>
+                <br />
                 <Link to='/learnPromise' >learnPromise</Link>
 
-                <br/>
+                <br />
                 <Link to='/learnGenerator' >learnGenerator</Link>
+
+                <br />
+                <Link to='/learnDescriptor' >学习descriptor</Link>
             </div>
         );
     }
