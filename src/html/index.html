@@ -1,42 +1,39 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-05 21:48:01
+ * @LastEditTime: 2021-03-05 22:43:31
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \umiapp\src\html\index.html
+-->
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    #root {
+      background-color: seashell;
+      overflow: hidden;
+      border: 1px solid seashell;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+
+    img {
+      float: left;
+    }
+
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
-  <script>
-    // bind
-    // fn.bind(context),//改变this指向,并返回一个函数
-    Function.prototype.bind2 = function (context) {
-      console.log(arguments, 'ass')
-      context = context || window
-      let self = this
-      var args = Array.prototype.slice.call(arguments, 1)
-
-      function fBound() {
-        var bindArgs = Array.prototype.slice.call(arguments)
-        return self.call(context, args.concat(bindArgs))
-      }
-      fBound.prototype = this.prototype
-      return fBound
-    }
-
-    function foo() {
-      this.name = 'zzj'
-    }
-
-    let bar = {
-      value: 1
-    }
-    foo.prototype.age = 18
-    let m = foo.bind2(bar)
-    console.log(m, m.prototype)
-
-  </script>
+  <div id="root">
+    <img src="./cat.jpg" alt="">
+  </div>
 </body>
 
 </html>
