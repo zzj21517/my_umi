@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-05 21:48:01
- * @LastEditTime: 2021-03-05 22:43:31
+ * @LastEditTime: 2021-03-31 22:30:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\html\index.html
@@ -10,30 +10,60 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style>
-    #root {
-      background-color: seashell;
-      overflow: hidden;
-      border: 1px solid seashell;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-    }
-
-    img {
-      float: left;
-    }
-
-  </style>
 </head>
 
 <body>
-  <div id="root">
-    <img src="./cat.jpg" alt="">
-  </div>
+  <script>
+    class Promise {
+      status = pendding //fulfilled,rejected,pendding
+      value = null
+      reason = null
+      resolvedCallbackList = []
+      rejectedCallbackList = []
+      constructor(executor) {
+        try {
+          executor(this.resolve, this.reject)
+        } catch (err) {
+          this.reject(err)
+        }
+      }
+      resolve(val) {
+        if (this.status === 'pendding') {
+          this.status = 'fulfilled'
+          this.value = val
+          this.resolvedCallbackList.forEach(fn => fn(val))
+        }
+      }
+      reject(err) {
+        if (this.status === 'pendding') {
+          this.status = 'rejected'
+          this.value = val
+          this.rejectedCallbackList.forEach(fn => fn(err))
+        }
+      }
+      then(resFn, errFn) {
+        let promise2 = new Promise((resolve, reject) => {
+          if (this.status === 'fulfilled') {
+            setTimeout(()=>{
+               let x=resFn(this.value)
+
+            })
+          } else if (this.status === 'rejected') {
+
+          } else if (this.status === 'pendding') {
+
+          }
+        })
+        return promise2
+      }
+    }
+
+    
+
+  </script>
 </body>
 
 </html>
