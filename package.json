@@ -30,12 +30,16 @@
     "react-dom": "^16.12.0",
     "rxjs": "^6.6.3",
     "shortid": "^2.2.16",
+    "snapsvg": "^0.5.1",
+    "snapsvg-cjs": "^0.0.6",
     "umi": "^3.3.2",
     "yorkie": "^2.0.0"
   },
   "devDependencies": {
     "@types/shortid": "^0.0.29",
+    "@types/snapsvg": "^0.5.0",
     "cross-env": "^7.0.3",
+    "imports-loader": "^2.0.0",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "ts-jest": "^26.5.1",
