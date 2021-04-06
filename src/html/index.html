@@ -1,69 +1,34 @@
-<!--
- * @Author: your name
- * @Date: 2021-03-05 21:48:01
- * @LastEditTime: 2021-03-31 22:30:25
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \umiapp\src\html\index.html
--->
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-
-<body>
-  <script>
-    class Promise {
-      status = pendding //fulfilled,rejected,pendding
-      value = null
-      reason = null
-      resolvedCallbackList = []
-      rejectedCallbackList = []
-      constructor(executor) {
-        try {
-          executor(this.resolve, this.reject)
-        } catch (err) {
-          this.reject(err)
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container{
+        border: 2px solid dodgerblue;
       }
-      resolve(val) {
-        if (this.status === 'pendding') {
-          this.status = 'fulfilled'
-          this.value = val
-          this.resolvedCallbackList.forEach(fn => fn(val))
-        }
+      .left{
+        float: left;
+        width: 100px;
+        height: 100px;
+        border: 1px solid #eee;
       }
-      reject(err) {
-        if (this.status === 'pendding') {
-          this.status = 'rejected'
-          this.value = val
-          this.rejectedCallbackList.forEach(fn => fn(err))
-        }
+
+      .right{
+        /* width: 100px; */
+        /* overflow: hidden; */
+        float: left;
+        height: 100px;
+        background-color: green;
       }
-      then(resFn, errFn) {
-        let promise2 = new Promise((resolve, reject) => {
-          if (this.status === 'fulfilled') {
-            setTimeout(()=>{
-               let x=resFn(this.value)
-
-            })
-          } else if (this.status === 'rejected') {
-
-          } else if (this.status === 'pendding') {
-
-          }
-        })
-        return promise2
-      }
-    }
-
-    
-
-  </script>
-</body>
-
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">你好</div>
+      <div class="right">我好</div>
+    </div>
+  </body>
 </html>
+
