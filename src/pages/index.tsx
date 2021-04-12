@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-19 19:48:17
- * @LastEditTime: 2021-04-06 21:33:21
+ * @LastEditTime: 2021-04-12 10:27:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\src\pages\index.tsx
@@ -56,6 +56,9 @@ class Index extends Component {
 
                 <br />
                 <Link to='/learnSnap' >学习snap.svg</Link>
+
+                <br/>
+                <Link to='/learnCanvas' >学习canvas</Link>
             </div>
         );
     }
