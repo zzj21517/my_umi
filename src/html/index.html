@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-14 14:20:02
- * @LastEditTime: 2021-04-14 17:37:35
+ * @LastEditTime: 2021-04-14 18:05:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_umi/src/html/index.html
@@ -14,90 +14,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
   <style>
+    body{
+      --keyword:keyword(red,50%);
+      color: var(--keyword);
+    }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <table id='tableMix' class='ui-table table'>
-      <thead>
-        <tr>
-          <th width='20'><input type='checkbox' /></th>
-          <th>文章标题</th>
-          <th width='22%'>发布时间</th>
-          <th width='15%' align="right">评论数</th>
-        </tr>
-      </thead>
-      <tbody>
-        <template>
-          ${data.map(function(obj,index){
-          return `
-          <tr>
-            <td>
-              <input type='checkbox' value='${obj.id}' />
-            </td>
-            <td>
-              <div class="ell">${obj.title}</div>
-            </td>
-            <td>
-              ${obj.time}
-            </td>
-            <td align="right">
-              ${obj.comment}
-            </td>
-          </tr>
-          `
-          }).join('')}
-        </template>
-      </tbody>
-    </table>
-  </div>
-
-  <script>
-    var eleTbody = document.querySelector('#tableMix tbody')
-    var strTemplate = eleTbody.querySelector('template').innerHTML
-    String.prototype.interpolate = function (params) {
-      const names = Object.keys(params)
-      const vals = Object.values(params)
-      // console.log(names,vals)
-      let self=this
-      let fn=function(data){
-        console.log(self,typeof `${self}`)
-        return eval(`\`${self}\``)
-      }
-     return fn(params.data)
-    //  return new Function('data', `return \`${self}\`;`)(params.data)
-    }
-
-
-    let json = {
-      "code": 0,
-      "msg": "获取成功",
-      "data": [{
-        "id": "0001",
-        "title": "如何让文字作为CSS背景图片显示？",
-        "time": "2020年10月20日",
-        "comment": 7
-      }, {
-        "id": "0002",
-        "title": "SVG feTurbulence滤镜深入介绍",
-        "time": "2020年10月17日",
-        "comment": 3
-      }, {
-        "id": "0003",
-        "title": "HTML enterkeyhint设置iOS/Android键盘enter键",
-        "time": "2020年10月11日",
-        "comment": 3
-      }, {
-        "id": "0004",
-        "title": "快速学习CSS Color Level 4的色值新语法",
-        "time": "2020年10月11日",
-        "comment": 2
-      }]
-    }
-    eleTbody.innerHTML = strTemplate.interpolate(json)
-
-  </script>
+  zzj
 </body>
 
+<script src="./keyword-color.js" ></script>
 </html>
