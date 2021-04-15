@@ -2,6 +2,7 @@
   "compilerOptions": {
     "noImplicitThis":true,
     "experimentalDecorators": true,
+    "strictNullChecks": false,
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",

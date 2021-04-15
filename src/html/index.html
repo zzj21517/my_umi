@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-14 14:20:02
- * @LastEditTime: 2021-04-14 18:05:07
+ * @LastEditTime: 2021-04-15 15:48:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_umi/src/html/index.html
@@ -15,14 +15,29 @@
   <title>Document</title>
   <style>
     body{
-      --keyword:keyword(red,50%);
-      color: var(--keyword);
+     
+    }
+
+    .content{
+      width: 200px;
+      height: 200px;
+      margin: 600px auto;
+      background-color: aqua;
+      font-size: 12px;
+      transform: scale(3);
+    }
+
+    .cy{
+      margin-top: 10px;
     }
   </style>
 </head>
 
 <body>
-  zzj
+  <div class="content" >
+    <div class="cy" >zzj</div>
+    <div class="cy">cy</div>
+  </div>
 </body>
 
 <script src="./keyword-color.js" ></script>
