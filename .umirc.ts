@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-01-06 20:14:15
- * @LastEditTime: 2021-01-27 22:41:27
+ * @LastEditTime: 2021-04-16 15:42:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \umiapp\.umirc.ts
@@ -15,13 +15,6 @@ export default defineConfig({
   hash: true,
   history: {
     type: 'hash',
-  },
-  proxy: {
-    '/api': {
-      target: 'http://localhost:3000',
-      pathRewrite: { '^/api': '' },
-      changeOrigin: true
-    }
   },
   dva: {
     skipModelValidate: true,
