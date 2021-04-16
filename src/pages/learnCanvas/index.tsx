@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-15 10:32:26
- * @LastEditTime: 2021-04-16 09:50:05
+ * @LastEditTime: 2021-04-16 18:22:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_umi/src/pages/learnCanvas/index.tsx
@@ -56,11 +56,18 @@ export default function LearnCanvas() {
             console.log(context.measureText('2、点击公众号底部【数字报刊】，进入矿业报；'))
             context.fillStyle = 'rgba(255,244,244,1)'
             context.fillRect(0, count = count + 17, canvasWidth, canvasHeight)
+            let curCount = count
             context.fillStyle = '#323233'
             context.font = '20px SourceHanSerifCN-Medium'
             context.fillText('筑梦2020', 40, count = count + 53)
             context.font = '14px PingFangSC-Regular'
             context.fillText('邀您一起看矿业报，最新报刊数据随时看', 40, count = count + 29)
+            context.shadowOffsetX=2
+            context.shadowOffsetY=2
+            context.shadowBlur = 20
+            context.shadowColor = 'rgba(0,0,0,0.25)'
+            context.fillStyle = 'rgba(255,244,244,1)'
+            context.fillRect(0, curCount+2, canvasWidth, 1)
             setImgSrc(canvas.toDataURL())
         }
         img.src = require('@/asserts/images/cat.jpg')
