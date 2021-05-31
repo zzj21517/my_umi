@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-31 10:27:00
- * @LastEditTime: 2021-05-31 17:50:49
+ * @LastEditTime: 2021-05-31 18:08:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_umi/src/pages/pipeUpload/index.tsx
@@ -42,6 +42,7 @@ export default function PipeUpload() {
                 action='/bigfile/upload'
                 withCredentials={false}
                 customRequest={(options) => {
+                    console.log(options,'ooo')
                     const { action, onSuccess, onError, file, onProgress } = options
                     let chunks = sliceFile(file)
                     let chunksPromiseList = chunks.map((item, index) => {
@@ -66,12 +67,13 @@ export default function PipeUpload() {
                             console.log(res2,'rrress2')
                             if(res2.code==200){
                                 setImgBase64(res2.data.imgBase64)
+                                onSuccess({uid:''},file)
                             }
                         })
                     })
                 }}
-                onChange={() => {
-
+                onChange={(e) => {
+                    console.log(e,'e')
                 }}
                 beforeUpload={() => {
                     return true

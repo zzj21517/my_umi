@@ -1,7 +1,7 @@
 /*
  * @Author: zzj
  * @Date: 2021-01-20 09:53:53
- * @LastEditTime: 2021-05-31 14:55:22
+ * @LastEditTime: 2021-05-31 18:09:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_umi/src/utils/requests.ts
@@ -91,10 +91,10 @@ request.interceptors.request.use((url: string, options) => {
 request.interceptors.response.use(async (response: Response, options) => {
     const data = await response.clone().json();
     // 401删除登录信息，退出登录
-    if (data.code == '401') {
-    } else if (data.code == 200 && data.subCode != 0) {
-        message.error(data.subMessage);
-    }
+    // if (data.code == '401') {
+    // } else if (data.code == 200 && data.subCode != 0) {
+    //     // message.error(data.subMessage);
+    // }
     return response;
 });
 
