@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-31 10:27:00
- * @LastEditTime: 2021-05-31 18:08:10
+ * @LastEditTime: 2021-05-31 22:14:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_umi/src/pages/pipeUpload/index.tsx
@@ -42,15 +42,19 @@ export default function PipeUpload() {
                 action='/bigfile/upload'
                 withCredentials={false}
                 customRequest={(options) => {
-                    console.log(options,'ooo')
                     const { action, onSuccess, onError, file, onProgress } = options
                     let chunks = sliceFile(file)
+                    let fileRead=new FileReader()
+                    fileRead.readAsArrayBuffer(file)
+                    fileRead.onload=(res)=>{
+                        console.log(res,'fileREad')
+                    }
+                    
                     let chunksPromiseList = chunks.map((item, index) => {
                         return new Promise((resolve, reject) => {
                             let fd = new FormData()
                             fd.append('file', item)
                             fd.append('index', String(index))
-                            console.log(fd.get('file'), 'fd',)
                             uploadBigFile(fd).then(res => {
                                 console.log(res)
                                 resolve(res)
@@ -64,7 +68,6 @@ export default function PipeUpload() {
                         console.log(resList)
                         let pipeList = resList.filter((item: any) => item.code == 200).map((item2: any) => item2.data.path)
                         concatFile({pipeList}).then(res2=>{
-                            console.log(res2,'rrress2')
                             if(res2.code==200){
                                 setImgBase64(res2.data.imgBase64)
                                 onSuccess({uid:''},file)
@@ -82,7 +85,7 @@ export default function PipeUpload() {
                 {uploadButton}
             </Upload>
 
-            <img src={`data:image;base64, ${imgBase64}`} width='200px' alt=""/>
+            {imgBase64&&<img src={`data:image;base64, ${imgBase64}`} width='200px' alt=""/>}
         </div>
     )
 }
