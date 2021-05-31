@@ -1,44 +1,40 @@
-<!--
- * @Author: your name
- * @Date: 2021-04-14 14:20:02
- * @LastEditTime: 2021-04-15 15:48:47
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /my_umi/src/html/index.html
--->
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
   <title>Document</title>
   <style>
-    body{
-     
+    .list{
+      display: flex;
+      overflow-y:hidden;
     }
-
     .content{
-      width: 200px;
-      height: 200px;
-      margin: 600px auto;
-      background-color: aqua;
-      font-size: 12px;
-      transform: scale(3);
+      flex: 0 0 100vw;
+      background-color: #fff;
+      position: relative;
+      height: 100px;
     }
 
-    .cy{
-      margin-top: 10px;
+    .btn{
+      position: absolute;
+      right: 0;
+      width: 4rem;
+    }
+
+    .space{
+      flex: 0 0 4rem;
     }
   </style>
 </head>
 
 <body>
-  <div class="content" >
-    <div class="cy" >zzj</div>
-    <div class="cy">cy</div>
+  <div class="list">
+    <button class="btn" data-type='danger'>删除</button>
+    <a href="javascript:" class="content">我是列表，试试左滑我</a>
+    <s class="space"></s>
   </div>
 </body>
 
-<script src="./keyword-color.js" ></script>
 </html>
