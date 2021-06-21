@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-18 15:50:17
- * @LastEditTime: 2021-06-18 17:03:32
+ * @LastEditTime: 2021-06-21 22:22:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_umi/src/pages/demo/sort/index.tsx
@@ -40,15 +40,75 @@ function coutSort(list: Array<number> = []) {
     }
     return res
 }
+
+// 快速排序
+function quickSort(list: Array<number> = []): Array<number> {
+    if (list.length <= 1) {
+        return list
+    }
+    let mid = list.splice(list.length - 1, 1)[0]
+    console.log(mid)
+    let left: Array<number> = [], right: Array<number> = [];
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] < mid) {
+            left.push(list[i])
+        } else {
+            right.push(list[i])
+        }
+    }
+    return [...quickSort(left).concat(mid), ...quickSort(right)]
+}
+
+// 归并排序
+function revertSort(list: Array<number> = []) {
+    // debugger;
+    if (list.length <= 1) {
+        return list 
+    }
+    let midIndex = Math.floor((list.length) / 2)
+    let leftArr = list.splice(0, midIndex)
+    let rightArr = list.splice(0)
+    console.log(leftArr, rightArr, 'aa')
+    return mergeSort(revertSort(leftArr), revertSort(rightArr))
+}
+
+function mergeSort(left: Array<number> = [], right: Array<number> = []) {
+    let result: Array<number> = []
+    console.log(left,right,'ee')
+    while (left.length && right.length) {
+        if (left[0] >= right[0]) {
+            console.log(right)
+            result.push(right.splice(0, 1)[0])
+        } else {
+            console.log(left, 'l')
+            result.push(left.splice(0, 1)[0])
+        }
+    }
+    while (left.length) {
+        result = result.concat(left.splice(0))
+    }
+    while (right.length) {
+        result = result.concat(right.splice(0))
+    }
+    return result
+}
+
 export default function index() {
     useEffect(() => {
-        console.log(bubbleSort([3, 5, 1, 4, 8, 6]))
-        console.log(coutSort([3, 5, 1, 4, 8, 6]))
+        // console.log(bubbleSort([3, 5, 1, 4, 8, 6]))
+        // console.log(coutSort([3, 5, 1, 4, 8, 6]))
+        // console.log(quickSort([3, 5, 1, 4, 8, 6]))
+        console.log(revertSort([3, 5, 1, 4, 8, 6]))
     }, [])
     return (
         <div>
             排序算法:
             1.冒泡排序O(n*n)
+            2.计数排序O(n+k)
+            3.快速排序O(nlogn)
+            4.归并排序O(nlogn)
+            5.插入排序O(n*n)
+            6.选择排序O(n*n)
         </div>
     )
 }
