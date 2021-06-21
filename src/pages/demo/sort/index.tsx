@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-18 15:50:17
- * @LastEditTime: 2021-06-21 22:22:59
+ * @LastEditTime: 2021-06-21 22:31:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_umi/src/pages/demo/sort/index.tsx
@@ -68,19 +68,17 @@ function revertSort(list: Array<number> = []) {
     let midIndex = Math.floor((list.length) / 2)
     let leftArr = list.splice(0, midIndex)
     let rightArr = list.splice(0)
-    console.log(leftArr, rightArr, 'aa')
     return mergeSort(revertSort(leftArr), revertSort(rightArr))
 }
 
 function mergeSort(left: Array<number> = [], right: Array<number> = []) {
+    console.log(left.toString(),right.toString(),'顺序')
     let result: Array<number> = []
-    console.log(left,right,'ee')
     while (left.length && right.length) {
         if (left[0] >= right[0]) {
             console.log(right)
             result.push(right.splice(0, 1)[0])
         } else {
-            console.log(left, 'l')
             result.push(left.splice(0, 1)[0])
         }
     }
