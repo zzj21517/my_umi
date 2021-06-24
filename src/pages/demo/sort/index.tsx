@@ -1,20 +1,20 @@
 /*
  * @Author: your name
- * @Date: 2021-06-18 15:50:17
- * @LastEditTime: 2021-06-21 22:31:02
+ * @Date: 2021-06-23 10:16:19
+ * @LastEditTime: 2021-06-24 14:39:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_umi/src/pages/demo/sort/index.tsx
  */
-
 import React, { useState, useEffect } from 'react'
+
 // 冒泡排序
 function bubbleSort(list: Array<number> = []) {
     if (list.length <= 1) {
-        return list
+        return
     }
     for (let i = 0; i < list.length - 1; i++) {
-        for (let j = 0; j < list.length - i - 1; j++) {
+        for (let j = 0; j < list.length - 1 - i; j++) {
             if (list[j] > list[j + 1]) {
                 [list[j], list[j + 1]] = [list[j + 1], list[j]]
             }
@@ -22,33 +22,46 @@ function bubbleSort(list: Array<number> = []) {
     }
     return list
 }
-
 // 计数排序
-function coutSort(list: Array<number> = []) {
+function countSort(list: Array<number> = []) {
     if (list.length <= 1) {
         return list
     }
-    let newArr: Array<number> = []
+    let min = list[0], max = list[0];
     for (let i = 0; i < list.length; i++) {
-        newArr[list[i]] = (newArr[list[i]] || 0) + 1
-    }
-    let res: Array<number> = []
-    for (let j = 0; j < newArr.length; j++) {
-        if (newArr[j]) {
-            res = res.concat(new Array(newArr[j]).fill(j))
+        if (list[i] < min) {
+            min = list[i]
+        }
+        if (list[i] > max) {
+            max = list[i]
         }
     }
-    return res
+    let newLen = max - min
+    let add = (min < 0 ? -min : 0)
+    let newArr = new Array(newLen + 1 + add).fill(0)
+    for (let i = 0; i < list.length; i++) {
+        console.log(list[i] - min + add, min, add, 'mmmm')
+        newArr[list[i] - min + add] += 1
+    }
+    console.log(newArr, 'newArrr')
+    let result = []
+    for (let i = 0; i < newArr.length; i++) {
+        let temp = newArr[i]
+        while (temp) {
+            result.push(i - 1 - add)
+            temp--
+        }
+    }
+    return result
 }
 
 // 快速排序
-function quickSort(list: Array<number> = []): Array<number> {
+function fastSort(list: Array<number> = []) {
     if (list.length <= 1) {
         return list
     }
+    let left = [], right = []
     let mid = list.splice(list.length - 1, 1)[0]
-    console.log(mid)
-    let left: Array<number> = [], right: Array<number> = [];
     for (let i = 0; i < list.length; i++) {
         if (list[i] < mid) {
             left.push(list[i])
@@ -56,32 +69,29 @@ function quickSort(list: Array<number> = []): Array<number> {
             right.push(list[i])
         }
     }
-    return [...quickSort(left).concat(mid), ...quickSort(right)]
+    return [...fastSort(left), mid, ...fastSort(right)]
 }
-
 // 归并排序
-function revertSort(list: Array<number> = []) {
-    // debugger;
+function mergeSort(list: Array<number> = []) {
     if (list.length <= 1) {
-        return list 
+        return list
     }
     let midIndex = Math.floor((list.length) / 2)
-    let leftArr = list.splice(0, midIndex)
-    let rightArr = list.splice(0)
-    return mergeSort(revertSort(leftArr), revertSort(rightArr))
+    let left = list.splice(0, midIndex)
+    let right = list.splice(0)
+    console.log(left, right, 'eee')
+    return merge(mergeSort(left), mergeSort(right))
 }
-
-function mergeSort(left: Array<number> = [], right: Array<number> = []) {
-    console.log(left.toString(),right.toString(),'顺序')
-    let result: Array<number> = []
+function merge(left: Array<number> = [], right: Array<number> = []) {
+    let result = []
     while (left.length && right.length) {
-        if (left[0] >= right[0]) {
-            console.log(right)
+        if (left[0] > right[0]) {
             result.push(right.splice(0, 1)[0])
         } else {
             result.push(left.splice(0, 1)[0])
         }
     }
+
     while (left.length) {
         result = result.concat(left.splice(0))
     }
@@ -90,23 +100,60 @@ function mergeSort(left: Array<number> = [], right: Array<number> = []) {
     }
     return result
 }
+//  插入排序
+function insertSort(list: Array<number> = []) {
+    // debugger;
+    if (list.length <= 1) {
+        return list
+    }
+    for (let i = 0; i < list.length; i++) {
+        let preIndex = i - 1
+        let cur = list[i]
+        while (preIndex >= 0 && list[preIndex] > cur) {
+            list[preIndex + 1] = list[preIndex]
+            preIndex--
+        }
+        list[preIndex + 1] = cur
+    }
+    return list
+}
 
-export default function index() {
+// 选择排序
+function selectSort(list: Array<number> = []) {
+    // debugger;
+    if (list.length <= 1) {
+        return list
+    }
+    for (let i = 0; i < list.length-1; i++) {
+        let minIndex = i
+        for (let j = i + 1; j < list.length; j++) {
+            if (list[j] < list[minIndex]) {
+                minIndex = j
+            }
+        }
+        [list[i], list[minIndex]] = [list[minIndex], list[i]]
+    }
+    return list
+}
+export default function Sort() {
     useEffect(() => {
-        // console.log(bubbleSort([3, 5, 1, 4, 8, 6]))
-        // console.log(coutSort([3, 5, 1, 4, 8, 6]))
-        // console.log(quickSort([3, 5, 1, 4, 8, 6]))
-        console.log(revertSort([3, 5, 1, 4, 8, 6]))
+        // console.log(bubbleSort([2, 9, 3, -1, 8, 3, 6, 2, 1]))
+        // console.log(countSort([2, 9, 3, -1, 8, 3, 6, 2, 1]))
+        // console.log(fastSort([2, 9, 3, -1, 8, 3, 6, 2, 1]))
+        // console.log(mergeSort([2, 9, 3, -1, 8, 3, 6, 2, 1]))
+        // console.log(insertSort([2, 9, 3, -1, 8, 3, 6, 2, 1]))
+        console.log(selectSort([2, 9, 3, -1, 8, 3, 6, 2, 1]))
     }, [])
     return (
         <div>
-            排序算法:
-            1.冒泡排序O(n*n)
-            2.计数排序O(n+k)
-            3.快速排序O(nlogn)
-            4.归并排序O(nlogn)
-            5.插入排序O(n*n)
-            6.选择排序O(n*n)
+            <ul>
+                <li>冒泡排序O(n*n)</li>
+                <li>计数排序O(n+k)</li>
+                <li>快速排序O(nlogn)</li>
+                <li>归并排序O(nlogn)</li>
+                <li>插入排序O(n*n)</li>
+                <li>选择排序O(n*n)</li>
+            </ul>
         </div>
     )
 }
